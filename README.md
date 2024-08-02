@@ -1,3 +1,3 @@
 # PatientTracking
 
-The purpose of this code is to organize the patient data of a healthcare organization and weight the categories for each patient by certain value.
+The goal of this project is to analyze patient data for a healthcare company based on metrics outlined in an excel spreadsheet. I chose to use java for this project because of its object-oriented nature and because of the prior experience I have working in the language.
