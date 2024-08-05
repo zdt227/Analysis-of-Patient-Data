@@ -5,9 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileWriter;
 
-public class GlobalFunctions {
+public class GlobalFunctions{
     /*
      * This method is used to read the contents of the ".csv" file and input them into the patientList ArrayList
+     * Time complexity: O(N^2)
      */
     public static void readFile(ArrayList<Patient> list, String filename){
         try{
@@ -20,7 +21,7 @@ public class GlobalFunctions {
                 for (int i = 0; i < splitTokens.length; i++) {
                     tokens[i] = splitTokens[i];
                 }
-                for (int i = splitTokens.length; i < 15; i++) {
+                for (int i = splitTokens.length; i < 16; i++) {
                     tokens[i] = "";
                 }
                 long date = convertDateToLong(tokens[3]);
@@ -36,13 +37,15 @@ public class GlobalFunctions {
     }
     /*
      * This method is used to output the contents of the patient array into a text file that can be read.
+     * Time complexity: O(N);
      */
     public static void outputToFile(ArrayList<Patient> list, String filename){
         try{
             FileWriter fWrite = new FileWriter(filename);
             fWrite.write("Here are the contents of the excel spreadsheet, organized by a score value which is out of 100.\n\n\n");
             for(Patient p: list){
-                fWrite.write(p.fullToString());
+                p.calculateScore();
+                fWrite.write(p.partialToString());
             }
             fWrite.close();
         }
@@ -50,11 +53,14 @@ public class GlobalFunctions {
             System.out.println("Error writing to the file, " + filename);
         }
     }
-
+    /*
+     * This method is used to convert a date stored as a string into a long.
+     * Time complexity: O(3) -> O(1)
+     */
     public static long convertDateToLong(String dateAString){
         String[] tokens = dateAString.split("/");
 
-        long dateAsLong = (Long.parseLong(tokens[2])*10000) + (Long.parseLong(tokens[1])*100) + (Long.parseLong(tokens[0]));
+        long dateAsLong = (Long.parseLong(tokens[2])*10000) + (Long.parseLong(tokens[0])*100) + (Long.parseLong(tokens[1]));
 
         return dateAsLong;
     }
