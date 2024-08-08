@@ -206,10 +206,10 @@ public class Patient implements Comparable<Patient>{
         HashMap<String, Double> levels = new HashMap<String, Double>();
         levels.put("Very High", (34.000/6.000) * 6.000);
         levels.put("High", (34.000/6.000) * 5.000);
-        levels.put("Moderate", (34.000/6.000) * 4.000);
-        levels.put("Low", (34.000/6.000) * 3.000);
-        levels.put("#N/A", (34.000/6.000) * 2.000);
-        levels.put("N/A", (34.000/6.000) * 1.000);
+        levels.put("Moderate", (34.000/6.000) * 3.000);
+        levels.put("Low", (34.000/6.000) * 1.000);
+        levels.put("#N/A", (34.000/6.000) * 0.000);
+        levels.put("N/A", (34.000/6.000) * 0.000);
         return levels.get(getLevel());
     }
     /*
